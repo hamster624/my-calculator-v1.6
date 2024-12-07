@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpantaNum Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="ExpantaNum.js"></script>
+  <script src="calculator.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">ExpantaNum Calculator</h1>
+
+    <!-- Number Inputs and Scale Button -->
+    <div class="input-group-container">
+      <div class="input-group">
+        <label for="num1">Number 1:</label>
+        <input type="text" id="num1" value="10" />
+      </div>
+
+      <div class="input-group-scale">
+        <button onclick="toggleScalePopup()">Change GUI Size</button>
+      </div>
+    </div>
+
+    <!-- Scale Popup for changing GUI scale -->
+    <div class="scale-popup" id="scalePopup">
+      <button onclick="changeScale(0.80)">80%</button>
+      <button onclick="changeScale(1.25)">100%</button>
+      <button onclick="changeScale(1.7)">150%</button>
+    </div>
+
+    <div class="input-group">
+      <label for="num2">Number 2:</label>
+      <input type="text" id="num2" value="5" />
+    </div>
+
+    <!-- Button Group with Icons and Symbols -->
+    <div class="button-group">
+      <button onclick="performOperation('add')"> Add (+)</button>
+      <button onclick="performOperation('subtract')"> Subtract (-)</button>
+      <button onclick="performOperation('multiply')"> Multiply (×)</button>
+      <button onclick="performOperation('divide')"> Divide (÷)</button>
+      <button onclick="performOperation('exponentiate')"> Exponent (^) </button>
+      <button onclick="performOperation('tetrate')">Tetrate (^^)</button>
+      <button onclick="performOperation('pentate')">Pentate (^^^)</button>
+      <button onclick="performOperation('hexate')">Hexate (^^^^)</button>
+      <button onclick="performOperation('heptate')">Heptate    (5*^)</button>
+      <button onclick="performOperation('octate')">Octate    (6*^)</button>
+      <button onclick="performOperation('nonate')">Nonate    (7*^)</button>
+      <button onclick="performOperation('decate')">Decate    (8*^)</button>
+      <button onclick="performOperation('unodecate')">Unodecate    (9*^)</button>
+      <button onclick="performOperation('dodecate')">Dodecate    (10*^)</button>
+      <button onclick="performOperation('tridocate')">Tridocate    (11*^)</button>
+      <button onclick="performOperation('quadocate')">Quadocate    (12*^)</button>
+      <button onclick="performOperation('quindecate')">Quindecate    (13*^)</button>
+      <button onclick="performOperation('sedecate')">Sedecate    (14*^)</button>
+      <button onclick="performOperation('septendecate')">Septendecate    (15*^)</button>
+      <button onclick="performOperation('1000arrow')">1000*^</button>
+      <button onclick="performOperation('10000arrow')">10000*^</button>
+      <button onclick="performOperation('100000arrow')">100000*^</button>
+      <button onclick="performOperation('1000000arrow')">1000000*^</button>
+
+      <!-- Notation Guide Button -->
+      <button onclick="showNotationGuide()">Notation Guide</button>
+    </div>
+
+    <!-- Result Area -->
+    <div class="result">
+      <h2>Result:</h2>
+      <p id="result">Result will be displayed here.</p>
+    </div>
+
+    <!-- Credits Text -->
+    <div class="credits">
+      <p>Credits: ChatGPT</p>
+      <p>And my writing skills for ChatGPT's prompts</p>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()">Toggle Black/White Theme</button>
+    </div>
+  </div>
+
+<!-- Modal for Notation Guide -->
+<div id="notationModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeNotationGuide()">×</span>
+    <h2>Notation Guide</h2>
+    <p>Notation Guide: So uhh if you don't know, here is my explanation. E100#2#3#2 (hyper-e notation) represents E100^E100 which is the first step (E100#2). Then after you get the result you do result^result^result (E100#2#3) and then that result^that result.</p>
+    <p>If E100#0(#1^5) it just means E100#1#1#1#1#1</p>
+  </div>
+</div>
+
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light-theme");
+    }
+
+    function toggleScalePopup() {
+      const popup = document.getElementById("scalePopup");
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
+
+    function changeScale(scale) {
+      const container = document.querySelector('.container');
+      container.style.transform = `scale(${scale})`;
+      document.querySelector('#scalePopup').style.display = 'none'; // Hide popup after selecting size
+    }
+
+    // Set default scale to 1.25 when page loads
+    window.onload = function() {
+      changeScale(1.25);
+    };
+
+    // Open the Notation Guide modal
+    function showNotationGuide() {
+      document.getElementById('notationModal').style.display = 'block';
+    }
+
+    // Close the Notation Guide modal
+    function closeNotationGuide() {
+      document.getElementById('notationModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
