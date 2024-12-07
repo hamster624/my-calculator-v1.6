@@ -100,10 +100,15 @@ function notate(expnum, fp) {
     return "10^^" + notate(exp.slog(10), fp);
   } else {
     let str = exp.toHyperE();
+    str = str.replace(/#0/g, '');
     str = str.replace(/(#1)+/g, (match, p1) => {
       const repeatCount = match.length / p1.length;
-      return `(#1^${repeatCount})` + '#1'.repeat(match.length - repeatCount * p1.length);
+      if (repeatCount === 1) {
+        return '';
+      }
+      return `(#1^${repeatCount})`;
     });
+
     return str;
   }
 }
